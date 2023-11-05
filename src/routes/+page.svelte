@@ -105,7 +105,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		padding: 0 1rem;
-		height: 90%;
+		max-height: 90%;
 		overflow: auto;
 		top: 5%;
 		border-radius: $env-border-radius;
@@ -115,7 +115,7 @@
 		p {
 			text-align: center;
 			white-space: pre-wrap;
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 	}
 
@@ -145,7 +145,7 @@
 		100% {
 			translate: 0 -100%;
 			z-index: 2;
-			height: calc(100vh - 100% - 2vmin);
+			max-height: calc(100dvh - 100% - 2vmin);
 		}
 	}
 	@keyframes envelope-shaking {
