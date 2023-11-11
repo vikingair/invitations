@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { drawIntoCanvas } from './Confetti';
+	import song from '../songs/song-birthday-0.mp3';
 
 	onMount(() => setTimeout(drawIntoCanvas, 600));
 </script>
 
 <canvas />
+<audio autoplay src={song} />
 
 <style>
 	canvas {
