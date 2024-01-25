@@ -8,7 +8,7 @@ const Ease = {
 	}
 };
 
-export const drawIntoCanvas = () => {
+export const drawIntoCanvas = (color?: string) => {
 	// canvas settings
 	const viewWidth = 512,
 		viewHeight = 350,
@@ -59,7 +59,7 @@ export const drawIntoCanvas = () => {
 			this.p3 = p3;
 			this.time = 0;
 			this.duration = 3 + Math.random() * 2;
-			this.color = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+			this.color = color || '#' + Math.floor(Math.random() * 0xffffff).toString(16);
 
 			this.w = 8;
 			this.h = 6;

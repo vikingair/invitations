@@ -2,30 +2,44 @@
 	import Confetti from '$lib/Confetti.svelte';
 	import { page } from '$app/stores';
 
-    const defaultQ: { content: string; img?: string } = { content: 'Here could be your text' };
-	let q = defaultQ;;
+	type InvitationsParams = {
+		content: string;
+		img?: string;
+		envelopeColor: string;
+		confettiColor?: string;
+		song?: string;
+		imgPosition?: string;
+	};
+	const defaultQ: InvitationsParams = {
+		content: 'Here could be your text',
+		envelopeColor: '#ea899a',
+		confettiColor: 'gold'
+	};
 
-	try {
-		q = JSON.parse(atob($page.url.searchParams.get('q') || '') || 'null') || defaultQ;
-	} catch (e) {
-		// nothing to do
-	}
+	const getQueryParams = (): InvitationsParams | undefined => {
+		try {
+			return JSON.parse(atob($page.url.searchParams.get('q') || '') || 'null');
+		} catch (e) {
+			// nothing to do
+		}
+	};
 
+	const q = { ...defaultQ, ...getQueryParams() };
 	let open = false;
-	let text = q.content;
-	const imgSrc = q.img;
+
+	document.body.style.setProperty('--envelope-color', q.envelopeColor);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="envlope-wrapper" on:click={() => (open = true)} role="button" tabindex="0">
-	{#if imgSrc}<img src={imgSrc} alt="intro" />{/if}
-	{#if open}<Confetti />{/if}
+	{#if q.img}<img style:object-position={q.imgPosition} src={q.img} alt="intro" />{/if}
+	{#if open}<Confetti color={q.confettiColor} song={q.song} />{/if}
 
 	<div class="envelope" class:open>
 		<div class="front flap"></div>
 		<div class="front pocket"></div>
 		<div class="letter">
-			<p>{text}</p>
+			<p>{q.content}</p>
 		</div>
 	</div>
 </div>
@@ -33,11 +47,10 @@
 <style lang="scss">
 	@use 'sass:math';
 
-	$color-env: #ea899a;
-	$color-env2: darken($color-env, 3%);
-	$color-flap: darken($color-env, 20%);
-	$color-bg: lighten($color-env, 15%);
-	$color-heart: #d00000;
+	$color-env: var(--envelope-color);
+	$color-env2: color-mix(in srgb, $color-env 95%, black);
+	$color-flap: color-mix(in srgb, $color-env 80%, black);
+	$color-bg: color-mix(in srgb, $color-env 35%, white);
 
 	$env-border-radius: 1vmin;
 	$env-width: 96vmin;
