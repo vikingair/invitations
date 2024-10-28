@@ -1,0 +1,19 @@
+name: PR
+
+on:
+  pull_request:
+
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/pnpm-install
+        with:
+          target: '.'
+      - name: lint 🎨
+        run: |
+          pnpm lint
+      - name: build ⚙️
+        run: |
+          pnpm build
