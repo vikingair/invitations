@@ -2,14 +2,18 @@
 	import { onMount } from 'svelte';
 	import { drawIntoCanvas } from './Confetti';
 
-	export let color: string | undefined = undefined;
-	export let song: string | undefined = undefined;
+	type Props = {
+		color?: string | undefined;
+		song?: string | undefined;
+	};
+
+	const { color, song }: Props = $props();
 
 	onMount(() => setTimeout(() => drawIntoCanvas(color), 600));
 </script>
 
-<canvas />
-{#if song}<audio autoplay src={song} />{/if}
+<canvas></canvas>
+{#if song}<audio autoplay src={song}></audio>{/if}
 
 <style>
 	canvas {

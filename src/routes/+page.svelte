@@ -19,19 +19,19 @@
 	const getQueryParams = (): InvitationsParams | undefined => {
 		try {
 			return JSON.parse(atob($page.url.searchParams.get('q') || '') || 'null');
-		} catch (e) {
+		} catch {
 			// nothing to do
 		}
 	};
 
 	const q = { ...defaultQ, ...getQueryParams() };
-	let open = false;
+	let open = $state(false);
 
 	document.body.style.setProperty('--envelope-color', q.envelopeColor);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="envlope-wrapper" on:click={() => (open = true)} role="button" tabindex="0">
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<div class="envlope-wrapper" onclick={() => (open = true)} role="button" tabindex="0">
 	{#if q.img}<img style:object-position={q.imgPosition} src={q.img} alt="intro" />{/if}
 	{#if open}<Confetti color={q.confettiColor} song={q.song} />{/if}
 

@@ -8,17 +8,15 @@ jobs:
   build_site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm-install
         with:
           target: '.'
-      - name: build
-        env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
+      - name: build ⚙️
         run: |
-          npm run build
+          pnpm build
       - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: 'build/'
 
@@ -37,4 +35,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

@@ -14,7 +14,7 @@ const options = {
     content: "Here is my text.\nCheck it out",
     img: "https://live.staticflickr.com/4150/5045502202_1d867c8a41_b.jpg"
 };
-window.open("https://fdc-viktor-luft.github.io/invitations/?q=" + btoa(JSON.stringify(options)));
+window.open("https://vikingair.github.io/invitations/?q=" + btoa(JSON.stringify(options)));
 ```
 
 This will open the link with the given content and image directly for you.
