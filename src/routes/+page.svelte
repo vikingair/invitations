@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Confetti from '$lib/Confetti.svelte';
-	import { page } from '$app/stores';
+	import Confetti from '#lib/Confetti.svelte';
+	import { page } from '$app/state';
 
 	type InvitationsParams = {
 		content: string;
@@ -18,7 +18,7 @@
 
 	const getQueryParams = (): InvitationsParams | undefined => {
 		try {
-			return JSON.parse(atob($page.url.searchParams.get('q') || '') || 'null');
+			return JSON.parse(atob(page.url.searchParams.get('q') || '') || 'null');
 		} catch {
 			// nothing to do
 		}
