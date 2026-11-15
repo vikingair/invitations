@@ -1,4 +1,2 @@
 allowBuilds:
-  '@parcel/watcher': true
-  '@sveltejs/kit': true
-  esbuild: true
+  '@parcel/watcher': false
