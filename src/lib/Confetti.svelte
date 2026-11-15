@@ -9,10 +9,21 @@
 
 	const { color, song }: Props = $props();
 
-	onMount(() => setTimeout(() => drawIntoCanvas(color), 600));
+	let canvas = $state<HTMLCanvasElement>();
+
+	onMount(() => {
+		let stop: (() => void) | undefined;
+		const timeout = setTimeout(() => {
+			if (canvas) stop = drawIntoCanvas(canvas, { colors: color ? [color] : undefined });
+		}, 600);
+		return () => {
+			clearTimeout(timeout);
+			stop?.();
+		};
+	});
 </script>
 
-<canvas></canvas>
+<canvas bind:this={canvas}></canvas>
 {#if song}<audio autoplay src={song}></audio>{/if}
 
 <style>
