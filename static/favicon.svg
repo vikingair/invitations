@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<!-- open flap -->
+	<path fill="#bb6e7b" d="M6 24 L32 6 L58 24 Z" />
+	<!-- inside of the envelope -->
+	<path fill="#bb6e7b" d="M6 24 H58 V53 Q58 56 55 56 H9 Q6 56 6 53 Z" />
+	<!-- letter -->
+	<path fill="#ffffff" d="M13 12 Q13 10 15 10 H49 Q51 10 51 12 V44 H13 Z" />
+	<path fill="#f2b632" d="M32 13 Q33 17.5 37.5 18.5 Q33 19.5 32 24 Q31 19.5 26.5 18.5 Q31 17.5 32 13 Z" />
+	<path fill="#d9c2c7" d="M20 27.5 H44 Q45 27.5 45 28.5 Q45 29.5 44 29.5 H20 Q19 29.5 19 28.5 Q19 27.5 20 27.5 Z" />
+	<path fill="#d9c2c7" d="M24 32 H40 Q41 32 41 33 Q41 34 40 34 H24 Q23 34 23 33 Q23 32 24 32 Z" />
+	<!-- pocket -->
+	<path fill="#ea899a" d="M6 24 L32 42 L58 24 V53 Q58 56 55 56 H9 Q6 56 6 53 Z" />
+	<path fill="#de8292" d="M9 56 L32 39 L55 56 Z" />
+</svg>
