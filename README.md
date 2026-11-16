@@ -52,8 +52,8 @@ Run e.g. this in your JS console:
 
 ```js
 const options = {
-    content: "Wir laden euch herzlich zur Taufe ein!\nSonntag, 14. Juni, 11 Uhr",
-    img: "https://live.staticflickr.com/4150/5045502202_1d867c8a41_b.jpg"
+    content: "You're very welcome!\nSunday, 14th June, 11 am",
+    img: "https://cdn.pixabay.com/photo/2017/12/23/16/26/church-3035490_960_720.jpg"
 };
 // UTF-8 safe base64 (plain `btoa` throws on characters like umlauts)
 const q = btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(options))));
