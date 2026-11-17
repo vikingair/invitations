@@ -1,16 +1,20 @@
 <script lang="ts">
 	import { drawIntoCanvas } from '../Confetti';
+	import Ornament from './Ornament.svelte';
+	import type { OrnamentIcon } from './types';
 
 	type Props = {
 		content: string;
 		img?: string;
 		imgPosition?: string;
 		colors: string[];
+		ornamentIcon: OrnamentIcon;
 		showCard: boolean;
 		reducedMotion: boolean;
 	};
 
-	const { content, img, imgPosition, colors, showCard, reducedMotion }: Props = $props();
+	const { content, img, imgPosition, colors, ornamentIcon, showCard, reducedMotion }: Props =
+		$props();
 
 	let canvas = $state<HTMLCanvasElement>();
 
@@ -30,12 +34,7 @@
 					<img src={img} style:object-position={imgPosition} alt="" />
 				</div>
 			{/if}
-			<svg class="ornament" viewBox="0 0 120 16" aria-hidden="true">
-				<line x1="4" y1="8" x2="48" y2="8" />
-				<line x1="72" y1="8" x2="116" y2="8" />
-				<rect x="58" y="1" width="4" height="14" rx="1" />
-				<rect x="53" y="5" width="14" height="4" rx="1" />
-			</svg>
+			<Ornament icon={ornamentIcon} />
 			<div class="text">
 				<p>{content}</p>
 			</div>
@@ -127,14 +126,6 @@
 			height: 100%;
 			object-fit: cover;
 		}
-	}
-
-	.ornament {
-		flex: none;
-		width: min(40%, 10rem);
-		fill: #c9a24a;
-		stroke: #c9a24a;
-		stroke-width: 1;
 	}
 
 	.text {

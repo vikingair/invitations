@@ -71,3 +71,13 @@ All options are optional and here is a complete list:
 | churchColor | CSS color | #efe6d6 (warm stone) |
 | accentColor | CSS color | #8fb3d9 (soft blue; doors, roof, frame, light tint) |
 | petalColor | CSS color | - (mix of white and accent) |
+| oi | ornament icon preset (see below) | i (ivy) |
+
+The ornament icon (`oi`) is shown on the invitation card between the photo and the text:
+
+| `oi` | Icon |
+|-|-|
+| `c` | golden cross |
+| `i` or missing/unknown | ivy |
+| `p` | white dove |
+| `a` | Noah's ark |
