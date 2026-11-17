@@ -4,7 +4,7 @@
 	import { getQueryParams } from '../params';
 	import ChurchScene from './ChurchScene.svelte';
 	import Reveal from './Reveal.svelte';
-	import type { Phase } from './types';
+	import { ORNAMENT_ICONS, type OrnamentIcon, type Phase } from './types';
 
 	type ChurchParams = {
 		content: string;
@@ -14,14 +14,18 @@
 		churchColor: string;
 		accentColor: string;
 		petalColor?: string;
+		/** ornament icon, see {@link OrnamentIcon} */
+		oi: OrnamentIcon;
 	};
 	const defaultQ: ChurchParams = {
 		content: 'Here could be your text',
 		churchColor: '#efe6d6',
-		accentColor: '#8fb3d9'
+		accentColor: '#8fb3d9',
+		oi: 'i'
 	};
 
 	const q = { ...defaultQ, ...getQueryParams<ChurchParams>(page.url) };
+	const ornamentIcon = ORNAMENT_ICONS.includes(q.oi) ? q.oi : defaultQ.oi;
 
 	// keep in sync with the transition durations in ChurchScene.svelte
 	const ZOOM_MS = 1200;
@@ -66,6 +70,7 @@
 			img={q.img}
 			imgPosition={q.imgPosition}
 			colors={petalColors}
+			{ornamentIcon}
 			showCard={phase === 'revealed'}
 			{reducedMotion}
 		/>
