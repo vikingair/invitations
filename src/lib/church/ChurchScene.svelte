@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ClickHint from '#lib/ClickHint.svelte';
 	import type { Phase } from './types';
 
 	type Props = {
@@ -118,6 +119,9 @@
 		<span class="leaf right">{@render leafDecoration()}</span>
 		<span class="gap"></span>
 	</button>
+
+	<!-- fingertip on the door centre, see $door-center-y -->
+	{#if phase === 'idle'}<ClickHint y="77.344%" />{/if}
 </div>
 
 <style lang="scss">

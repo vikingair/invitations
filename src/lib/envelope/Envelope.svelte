@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Confetti from '#lib/Confetti.svelte';
+	import ClickHint from '#lib/ClickHint.svelte';
 	import { page } from '$app/state';
 	import { getQueryParams } from '../params';
 
@@ -43,6 +44,7 @@
 		<div class="letter">
 			<p>{q.content}</p>
 		</div>
+		{#if !open}<ClickHint />{/if}
 	</div>
 </div>
 
